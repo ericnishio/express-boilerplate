@@ -11,7 +11,7 @@ export default (app: $App) => {
     handler: routes[route],
   }))
 
-  endpoints.forEach((endpoint) => {
+  endpoints.forEach((endpoint: Endpoint) => {
     const [method, path] = endpoint.route.split(' ')
 
     app[method](path, endpoint.handler)
