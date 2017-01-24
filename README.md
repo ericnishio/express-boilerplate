@@ -12,6 +12,7 @@ A modern Express boilerplate for building RESTful APIs.
 
 ```
 yarn
+cp .env.example .env
 ```
 
 ## Start dev server
