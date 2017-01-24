@@ -3,7 +3,7 @@
 import routes from '$src/routes'
 
 import type {$App} from 'express'
-import type {Route, Endpoint} from '$src/types'
+import type {Route, Endpoint} from './types'
 
 export default (app: $App) => {
   const endpoints = Object.keys(routes).map((route: Route): Endpoint => ({
