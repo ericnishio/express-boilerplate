@@ -2,19 +2,13 @@
 
 import 'babel-polyfill'
 import dotenv from 'dotenv'
-import express from 'express'
-import helmet from 'helmet'
 
-import createEndpoints from '$modules/routes/createEndpoints'
+import createApp from '$modules/app/createApp'
 
 dotenv.config()
 
-const app = express()
+const app = createApp()
 const port = process.env.PORT || 3000
-
-app.use(helmet())
-
-createEndpoints(app)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}...`)

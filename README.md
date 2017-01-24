@@ -26,3 +26,9 @@ yarn start
 ```
 yarn build
 ```
+
+## Run tests
+
+```
+yarn test
+```

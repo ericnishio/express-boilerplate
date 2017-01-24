@@ -6,13 +6,15 @@
   "description": "A modern Express boilerplate for building RESTful APIs.",
   "scripts": {
     "start": "babel-watch --watch src src --out-dir dist && node dist/index.js",
-    "build": "yarn lint && babel src --out-dir dist",
-    "lint": "eslint src && flow"
+    "build": "yarn lint && babel src --out-dir dist --quiet",
+    "test": "yarn build && jest",
+    "lint": "eslint src __tests__ && flow --quiet"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
+    "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-module-resolver": "^2.4.0",
     "babel-plugin-syntax-flow": "^6.18.0",
@@ -23,12 +25,21 @@
     "eslint": "^3.14.0",
     "eslint-plugin-flowtype": "^2.30.0",
     "eslint-plugin-flowtype-errors": "^2.0.3",
-    "flow-bin": "^0.38.0"
+    "eslint-plugin-jest": "^1.0.2",
+    "flow-bin": "^0.38.0",
+    "flow-typed": "^2.0.0",
+    "http": "^0.0.0",
+    "jest": "^18.1.0",
+    "supertest": "^2.0.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.22.0",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
     "helmet": "^3.4.0"
+  },
+  "jest": {
+    "testPathDirs": ["tests"],
+    "testRegex": "-test.js"
   }
 }

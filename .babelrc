@@ -12,6 +12,7 @@
       "alias": {
         "$root": ".",
         "$src": "./src",
+        "$dist": "./dist",
         "$modules": "./src/modules"
       }
     }]
