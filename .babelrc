@@ -1,0 +1,19 @@
+{
+  "sourceMaps": true,
+  "presets": [
+    "stage-0",
+    "es2015-node4"
+  ],
+  "plugins": [
+    "syntax-flow",
+    "transform-flow-strip-types",
+    ["module-resolver", {
+      "root": ["."],
+      "alias": {
+        "$root": ".",
+        "$src": "./src",
+        "$modules": "./src/modules"
+      }
+    }]
+  ]
+}

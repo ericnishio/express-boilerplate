@@ -1,0 +1,33 @@
+{
+  "name": "express-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "description": "A modern Express boilerplate for building RESTful APIs.",
+  "scripts": {
+    "start": "babel-watch --watch src src --out-dir dist && node dist/index.js",
+    "build": "babel src --out-dir dist"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-module-resolver": "^2.4.0",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-es2015-node4": "^2.1.1",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-watch": "^2.0.5",
+    "eslint": "^3.14.0",
+    "eslint-plugin-flowtype": "^2.30.0",
+    "eslint-plugin-flowtype-errors": "^2.0.3",
+    "flow-bin": "^0.38.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.22.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.0",
+    "helmet": "^3.4.0"
+  }
+}

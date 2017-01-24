@@ -1,0 +1,17 @@
+[options]
+
+module.name_mapper='^\$src/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+module.name_mapper='^\$modules/\(.*\)$' -> '<PROJECT_ROOT>/src/modules/\1'
+
+module.ignore_non_literal_requires=true
+
+experimental.strict_type_args=true
+
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+
+module.file_ext=.js
+module.file_ext=.json
+
+[libs]
+
+flow-typed/
