@@ -15,9 +15,9 @@ describe('home', () => {
     server.close()
   })
 
-  it('should get home', () => {
-    return request(server)
-      .get('/')
-      .expect({message: 'Hello world!'})
+  it('should get home', async () => {
+    const response = await request(server).get('/')
+
+    expect(response.body).toEqual({message: 'Hello world!'})
   })
 })

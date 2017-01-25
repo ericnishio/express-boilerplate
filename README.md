@@ -7,6 +7,7 @@ A modern Express boilerplate for building RESTful APIs.
 - ES2015+ (incl. async/await)
 - Flow
 - ESLint
+- Jest
 
 ## Install
 

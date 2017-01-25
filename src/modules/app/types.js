@@ -2,9 +2,7 @@
 
 import type {$Request, $Response} from 'express'
 
-export type App = Object
-
-export type Route = string // e.g. 'get /foo/bar'
+export type Route = string
 
 export type Endpoint = {
   route: Route,

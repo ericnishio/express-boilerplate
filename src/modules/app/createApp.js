@@ -5,9 +5,9 @@ import helmet from 'helmet'
 
 import createEndpoints from './createEndpoints'
 
-import type {App} from './types'
+import type {$Application} from 'express'
 
-export default (): App => {
+export default (): $Application => {
   const app = express()
 
   app.use(helmet())
