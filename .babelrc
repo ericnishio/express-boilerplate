@@ -12,6 +12,8 @@
       "alias": {
         "$root": ".",
         "$src": "./src",
+        "$app": "./src/app",
+        "$db": "./src/db",
         "$modules": "./src/modules"
       }
     }]

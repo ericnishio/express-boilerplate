@@ -1,11 +1,11 @@
 // @flow
 
-import getGreeting from '$modules/general/getGreeting'
-import postMessage from '$modules/general/postMessage'
+import createPost from '$modules/post/createPost'
+import getPost from '$modules/post/getPost'
 import notFound from '$modules/errors/404'
 
 export default {
-  'get /': getGreeting,
-  'post /contact': postMessage,
+  'post /posts': createPost,
+  'get /posts/:id': getPost,
   'get *': notFound,
 }

@@ -1,11 +1,10 @@
 // @flow
 
 import 'babel-polyfill'
-import dotenv from 'dotenv'
 
-import createApp from '$modules/app/createApp'
+import createApp from '$app/createApp'
 
-dotenv.config()
+require('dotenv').load()
 
 const app = createApp()
 const port = process.env.PORT || 3000

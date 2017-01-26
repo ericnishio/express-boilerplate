@@ -1,6 +1,8 @@
 [options]
 
 module.name_mapper='^\$src/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
+module.name_mapper='^\$app/\(.*\)$' -> '<PROJECT_ROOT>/src/app/\1'
+module.name_mapper='^\$db/\(.*\)$' -> '<PROJECT_ROOT>/src/db/\1'
 module.name_mapper='^\$modules/\(.*\)$' -> '<PROJECT_ROOT>/src/modules/\1'
 
 module.ignore_non_literal_requires=true
