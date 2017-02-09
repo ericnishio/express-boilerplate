@@ -1,12 +1,13 @@
 // @flow
 
-import type {$Request, $Response} from 'express'
+import type {$Request, $Response, Middleware} from 'express'
 
 export type Route = string
 
 export type Endpoint = {
   route: Route,
   handler: ($Request, $Response) => mixed,
+  middlewares: Array<Middleware>,
 }
 
 export type Id = string
