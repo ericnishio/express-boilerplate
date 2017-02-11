@@ -1,0 +1,16 @@
+version: "2"
+services:
+  app:
+    container_name: exprboil-app
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: exprboil-mongo
+    image: mongo
+    ports:
+      - "27017:27017"

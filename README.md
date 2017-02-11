@@ -4,7 +4,7 @@ express-boilerplate
 A modern Express boilerplate for building RESTful APIs.
 
 - Babel (transpiles to Node 4)
-- ES2015+ (incl. async/await)
+- ES2016, async/await, etc.
 - Flow
 - ESLint
 - Mongoose
