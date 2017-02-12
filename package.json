@@ -41,9 +41,9 @@
     "mongoose": "^4.7.8"
   },
   "jest": {
+    "testEnvironment": "node",
     "testPathDirs": [
       "tests"
-    ],
-    "testRegex": "-test.js"
+    ]
   }
 }
