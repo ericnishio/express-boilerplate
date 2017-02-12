@@ -34,3 +34,5 @@ yarn build
 ```
 yarn test
 ```
+
+(With Docker: `docker-compose run app /bin/sh -c 'npm test'`)
