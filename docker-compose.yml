@@ -3,6 +3,7 @@ services:
   app:
     container_name: exprboil-app
     build: .
+    command: npm start
     volumes:
       - ./:/app
     ports:
