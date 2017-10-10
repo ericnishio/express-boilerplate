@@ -2,7 +2,7 @@
   "sourceMaps": "inline",
   "presets": [
     "stage-0",
-    "es2015-node4"
+    "es2015-node6"
   ],
   "plugins": [
     "syntax-flow",

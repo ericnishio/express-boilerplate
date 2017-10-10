@@ -3,7 +3,7 @@ express-boilerplate
 
 A modern Express boilerplate for building RESTful APIs.
 
-- Babel (transpiles to Node 4)
+- Babel (transpiles to Node 6)
 - ES2016, async/await, etc.
 - Flow
 - ESLint
@@ -14,10 +14,12 @@ A modern Express boilerplate for building RESTful APIs.
 
 ```
 yarn
-cp .env.test .env
+cp .env.dev .env
 ```
 
 ## Start dev server
+
+(Run the tests to lift up the database.)
 
 ```
 yarn start
@@ -32,7 +34,5 @@ yarn build
 ## Run tests
 
 ```
-yarn test
+./run-tests.sh
 ```
-
-(With Docker: `docker-compose run app /bin/sh -c 'npm test'`)

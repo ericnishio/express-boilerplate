@@ -1,17 +1,18 @@
 version: "2"
 services:
-  app:
-    container_name: exprboil-app
-    build: .
-    command: npm start
+  app-test:
+    container_name: exprboil-app-test
+    image: node:boron
     volumes:
       - ./:/app
     ports:
       - "3000:3000"
     links:
-      - mongo
-  mongo:
-    container_name: exprboil-mongo
+      - mongo-test
+    env_file:
+      - .env.test
+  mongo-test:
+    container_name: exprboil-mongo-test
     image: mongo
     ports:
       - "27017:27017"
