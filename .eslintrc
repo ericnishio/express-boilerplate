@@ -21,10 +21,9 @@
     "quotes": [2, "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
     "semi": [2, "never"],
     "display-name": 0,
-    "flowtype/use-flow-type": [2, "always"],
+    "flowtype/use-flow-type": 2,
     "flowtype/require-valid-file-annotation": [2, "always"],
     "flowtype/delimiter-dangle": [2, "always-multiline"],
-    "jest/no-exclusive-tests": 2,
     "jest/no-identical-title": 2
   },
   "plugins": [
