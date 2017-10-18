@@ -8,7 +8,7 @@
     "start": "babel-watch --watch src src/index.js",
     "debug": "DB=mongodb://localhost:27017/expressboilerplate babel-watch --watch src src/index.js --inspect",
     "build": "babel src --out-dir dist --quiet",
-    "test": "jest",
+    "test": "jest --verbose",
     "proofread": "eslint src tests && flow --quiet"
   },
   "devDependencies": {
