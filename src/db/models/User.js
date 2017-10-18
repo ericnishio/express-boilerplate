@@ -2,7 +2,7 @@
 
 import mongoose from 'mongoose'
 
-import type {DbModel} from '$app/types'
+import type {DbModel, Id} from '$app/types'
 
 type BaseUser = {
   username: string,
@@ -12,7 +12,7 @@ type BaseUser = {
 export type DbUser = DbModel & BaseUser
 
 export type UpsertUser = BaseUser & {
-  _id?: string,
+  _id?: Id,
 }
 
 const UserSchema = mongoose.Schema({

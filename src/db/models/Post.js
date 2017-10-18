@@ -2,11 +2,17 @@
 
 import mongoose from 'mongoose'
 
-import type {DbModel} from '$app/types'
+import type {DbModel, Id} from '$app/types'
 
-export type DbPost = DbModel & {
+export type BasePost = {
   title: string,
   body: string,
+}
+
+export type DbPost = DbModel & BasePost
+
+export type UpsertPost = BasePost & {
+  _id?: Id,
 }
 
 const PostSchema = mongoose.Schema({
