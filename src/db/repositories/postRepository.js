@@ -18,5 +18,5 @@ export const upsertPost = async (payload: UpsertPost): Promise<DbPost> => {
 
   return isNew
     ? await Post.create(dbPost)
-    : await Post.update(dbPost)
+    : await Post.update({_id: payload._id}, dbPost)
 }

@@ -21,5 +21,5 @@ export const upsertUser = async (payload: UpsertUser): Promise<DbUser> => {
 
   return isNew
     ? await User.create(dbUser)
-    : await User.update(dbUser)
+    : await User.update({_id: payload._id}, dbUser)
 }
