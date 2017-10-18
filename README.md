@@ -6,7 +6,7 @@ express-boilerplate
 A modern Express boilerplate for building RESTful APIs.
 
 - Babel (transpiles to Node 6)
-- ES2016, async/await, etc.
+- ES2017, async/await, etc.
 - Flow
 - ESLint
 - JWT-based authentication
