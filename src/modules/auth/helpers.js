@@ -18,7 +18,10 @@ export const validatePassword = async (password1: string, password2: string) => 
 
 export const generateAccessToken = async (user: DbUser): Promise<string> => {
   const tokenData: AccessToken = {
-    user,
+    user: {
+      _id: user._id,
+      username: user.username,
+    },
     refresh: user.password,
     expires: +new Date() + ms('1 day'),
   }

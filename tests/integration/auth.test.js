@@ -3,6 +3,7 @@
 import request from 'supertest'
 import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
+import ms from 'ms'
 
 import User from '$db/models/User'
 import createTestServer from '../createTestServer'
@@ -69,8 +70,11 @@ describe('auth', () => {
 
   it('should fail to verify incorrect access token', async () => {
     const fakeAccessToken = await jwt.sign({
-      user: defaultUser,
-      expires: +new Date() + 1000,
+      user: {
+        _id: 'foo',
+        username: defaultUser.username,
+      },
+      expires: +new Date() + ms('1 day'),
       refresh: 'fakeRefreshToken',
     }, 'incorrect_secret_123')
 
@@ -96,8 +100,11 @@ describe('auth', () => {
 
   it('should fail to refresh access token', async () => {
     const fakeAccessToken = await jwt.sign({
-      user: defaultUser,
-      expires: +new Date() + 1000,
+      user: {
+        _id: 'foo',
+        username: defaultUser.username,
+      },
+      expires: +new Date() + ms('1 day'),
       refresh: 'fakeRefreshToken',
     }, 'incorrect_secret_123')
 

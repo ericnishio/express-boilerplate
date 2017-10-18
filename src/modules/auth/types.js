@@ -1,6 +1,6 @@
 // @flow
 
-import type {DbUser} from '$db/models/User'
+import type {Id} from '$app/types'
 
 export type Credentials = {
   username: string,
@@ -8,7 +8,10 @@ export type Credentials = {
 }
 
 export type AccessToken = {
-  user: DbUser,
+  user: {
+    _id: Id,
+    username: string,
+  },
   refresh: string,
   expires: number,
 }
