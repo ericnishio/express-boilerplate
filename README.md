@@ -1,6 +1,8 @@
 express-boilerplate
 ===================
 
+[![Known Vulnerabilities](https://snyk.io/test/github/ericnishio/express-boilerplate/master/badge.svg)](https://snyk.io/test/github/ericnishio/express-boilerplate)
+
 A modern Express boilerplate for building RESTful APIs.
 
 - Babel (transpiles to Node 6)
