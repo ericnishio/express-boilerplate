@@ -8,8 +8,8 @@ import type {$Request} from 'express'
 import type {DbUser} from '$db/models/User'
 import type {AccessToken} from './types'
 
-export const validatePassword = async (password1: string, password2: string) => {
-  const isCorrect = await bcrypt.compare(password1, password2)
+export const validatePassword = async (password: string, hash: string) => {
+  const isCorrect = await bcrypt.compare(password, hash)
 
   if (!isCorrect) {
     throw new Error('INCORRECT_PASSWORD')
