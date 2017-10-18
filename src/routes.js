@@ -1,12 +1,12 @@
 // @flow
 
-import register from '$modules/auth/register'
-import login from '$modules/auth/login'
-import verify from '$modules/auth/verify'
-import refresh from '$modules/auth/refresh'
-import createPost from '$modules/post/createPost'
-import getPost from '$modules/post/getPost'
-import notFound from '$modules/errors/404'
+import register from '$modules/auth/handlers/register'
+import login from '$modules/auth/handlers/login'
+import verify from '$modules/auth/handlers/verify'
+import refresh from '$modules/auth/handlers/refresh'
+import createPost from '$modules/post/handlers/createPost'
+import getPost from '$modules/post/handlers/getPost'
+import notFound from '$modules/error/handlers/404'
 
 import {auth} from '$modules/auth/middlewares'
 

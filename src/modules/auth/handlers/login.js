@@ -1,7 +1,7 @@
 // @flow
 
 import {findUserByUsername} from '$db/repositories/userRepository'
-import {validatePassword, generateAccessToken} from './helpers'
+import {validatePassword, generateAccessToken} from '../helpers'
 
 import type {$Request, $Response} from 'express'
 import type {Credentials} from '$modules/auth/types'

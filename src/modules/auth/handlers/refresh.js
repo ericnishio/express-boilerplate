@@ -3,7 +3,7 @@
 import jwt from 'jsonwebtoken'
 
 import {findUserById} from '$db/repositories/userRepository'
-import {generateAccessToken, extractAccessToken} from './helpers'
+import {generateAccessToken, extractAccessToken} from '../helpers'
 
 import type {$Request, $Response} from 'express'
 

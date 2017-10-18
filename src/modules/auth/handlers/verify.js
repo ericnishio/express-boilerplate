@@ -1,6 +1,6 @@
 // @flow
 
-import {verifyAccessToken, extractAccessToken} from './helpers'
+import {verifyAccessToken, extractAccessToken} from '../helpers'
 
 import type {$Request, $Response} from 'express'
 
