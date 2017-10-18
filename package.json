@@ -28,7 +28,6 @@
     "eslint-plugin-jest": "^21.2.0",
     "flow-bin": "^0.56.0",
     "flow-typed": "^2.2.0",
-    "http": "^0.0.0",
     "jest": "^21.2.1",
     "supertest": "^3.0.0"
   },

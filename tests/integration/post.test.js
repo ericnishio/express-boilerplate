@@ -8,8 +8,8 @@ import createTestServer from '../createTestServer'
 describe('post', () => {
   let server
 
-  beforeAll(() => {
-    server = createTestServer()
+  beforeAll(async () => {
+    server = await createTestServer()
   })
 
   afterAll(() => {

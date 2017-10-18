@@ -10,14 +10,15 @@ import createEndpoints from './createEndpoints'
 
 import type {$Application} from 'express'
 
-export default (): $Application => {
+export default async (): Promise<$Application> => {
   const app = express()
 
   app.use(helmet())
   app.use(cors())
   app.use(bodyParser.json())
 
-  connectDb()
+  await connectDb()
+
   createEndpoints(app)
 
   return app
