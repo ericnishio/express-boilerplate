@@ -22,7 +22,7 @@ cp .env.dev .env
 
 ## Start dev server
 
-(Run the tests to lift up the database.)
+(Run the tests to lift up the database container.)
 
 ```
 yarn start
