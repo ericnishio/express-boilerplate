@@ -9,6 +9,7 @@ A modern Express boilerplate for building RESTful APIs.
 - ES2016, async/await, etc.
 - Flow
 - ESLint
+- JWT-based authentication
 - Mongoose
 - Jest
 
