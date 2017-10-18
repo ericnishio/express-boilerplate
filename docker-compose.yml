@@ -2,7 +2,7 @@ version: "2"
 services:
   app-test:
     container_name: exprboil-app-test
-    image: node:boron
+    image: ericnishio/express-boilerplate
     volumes:
       - ./:/app
     ports:
