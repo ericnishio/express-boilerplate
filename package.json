@@ -7,9 +7,9 @@
   "scripts": {
     "start": "babel-watch --watch src src/index.js",
     "debug": "DB=mongodb://localhost:27017/expressboilerplate babel-watch --watch src src/index.js --inspect",
-    "build": "yarn lint && yarn test && babel src --out-dir dist --quiet",
+    "build": "babel src --out-dir dist --quiet",
     "test": "jest",
-    "lint": "eslint src tests && flow --quiet"
+    "proofread": "eslint src tests && flow --quiet"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
