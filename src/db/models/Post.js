@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 
 import type {DbModel, Id} from '$app/types'
 
-export type BasePost = {
+type BasePost = {
   title: string,
   body: string,
 }
