@@ -8,7 +8,7 @@ import createPost from '$modules/post/createPost'
 import getPost from '$modules/post/getPost'
 import notFound from '$modules/errors/404'
 
-import {auth} from '$modules/post/middlewares'
+import {auth} from '$modules/auth/middlewares'
 
 export default {
   'post /auth/register': {handler: register},

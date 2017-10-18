@@ -6,29 +6,25 @@ import jwt from 'jsonwebtoken'
 
 import User from '$db/models/User'
 import createTestServer from '../createTestServer'
-
-const eric = {
-  username: 'eric',
-  password: 'foobarbaz',
-}
+import {register, login, defaultUser} from '../helpers'
 
 describe('auth', () => {
   let server
 
   beforeAll(async () => {
-    await User.collection.drop()
     server = await createTestServer()
   })
 
-  afterAll(() => {
+  afterAll(async () => {
     server.close()
+
+    await User.collection.drop()
+
     mongoose.connection.close()
   })
 
   it('should register new user', async () => {
-    const response = await request(server)
-      .post('/auth/register')
-      .send(eric)
+    const response = await register(server)
 
     expect(response.status).toEqual(201)
   })
@@ -39,38 +35,28 @@ describe('auth', () => {
       password: 'foobarbazqux',
     }
 
-    await request(server)
-      .post('/auth/register')
-      .send(credentials)
+    await register(server, credentials)
 
-    const response = await request(server)
-      .post('/auth/register')
-      .send(credentials)
+    const response = await register(server, credentials)
 
     expect(response.status).toEqual(400)
   })
 
   it('should log in', async () => {
-    const response = await request(server)
-      .post('/auth/login')
-      .send(eric)
+    const response = await login(server)
 
     expect(response.status).toEqual(200)
     expect(response.body.jwt).toBeDefined()
   })
 
   it('should fail to log in', async () => {
-    const response = await request(server)
-      .post('/auth/login')
-      .send({...eric, password: 'myIncorrectPassword'})
+    const response = await login(server, {...defaultUser, password: 'myIncorrectPassword'})
 
     expect(response.status).toEqual(401)
   })
 
   it('should verify access token', async () => {
-    const loginResponse = await request(server)
-      .post('/auth/login')
-      .send(eric)
+    const loginResponse = await login(server)
 
     const accessToken = loginResponse.body.jwt
 
@@ -83,7 +69,7 @@ describe('auth', () => {
 
   it('should fail to verify incorrect access token', async () => {
     const fakeAccessToken = await jwt.sign({
-      user: eric,
+      user: defaultUser,
       expires: +new Date() + 1000,
       refresh: 'fakeRefreshToken',
     }, 'incorrect_secret_123')
@@ -96,9 +82,7 @@ describe('auth', () => {
   })
 
   it('should refresh access token', async () => {
-    const loginResponse = await request(server)
-      .post('/auth/login')
-      .send(eric)
+    const loginResponse = await login(server)
 
     const accessToken = loginResponse.body.jwt
 
@@ -112,7 +96,7 @@ describe('auth', () => {
 
   it('should fail to refresh access token', async () => {
     const fakeAccessToken = await jwt.sign({
-      user: eric,
+      user: defaultUser,
       expires: +new Date() + 1000,
       refresh: 'fakeRefreshToken',
     }, 'incorrect_secret_123')

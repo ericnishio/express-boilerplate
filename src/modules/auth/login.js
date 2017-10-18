@@ -4,10 +4,10 @@ import {findUserByUsername} from '$db/repositories/userRepository'
 import {validatePassword, generateAccessToken} from './helpers'
 
 import type {$Request, $Response} from 'express'
-import type {UpsertUser} from '$db/models/User'
+import type {Credentials} from '$modules/auth/types'
 
 export default async (req: $Request, res: $Response) => {
-  const {username, password}: UpsertUser = (req.body: any)
+  const {username, password}: Credentials = (req.body: any)
 
   try {
     const user = await findUserByUsername(username)

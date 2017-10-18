@@ -1,12 +1,12 @@
 // @flow
 
-import {verifyAccessToken} from './helpers'
+import {verifyAccessToken, extractAccessToken} from './helpers'
 
 import type {$Request, $Response} from 'express'
 
 export default async (req: $Request, res: $Response) => {
   try {
-    const accessToken = req.headers.authorization.split('Bearer ')[1]
+    const accessToken = extractAccessToken(req)
 
     await verifyAccessToken(accessToken)
 

@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import ms from 'ms'
 
+import type {$Request} from 'express'
 import type {DbUser} from '$db/models/User'
 import type {AccessToken} from './types'
 
@@ -36,3 +37,6 @@ export const verifyAccessToken = async (accessToken: string): Promise<?AccessTok
     throw e
   }
 }
+
+export const extractAccessToken = (req: $Request): string =>
+  req.headers.authorization.split('Bearer ')[1]

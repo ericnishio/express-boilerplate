@@ -3,17 +3,30 @@
 import request from 'supertest'
 import mongoose from 'mongoose'
 
+import Post from '$db/models/Post'
+import User from '$db/models/User'
 import createTestServer from '../createTestServer'
+import {register, login} from '../helpers'
 
 describe('post', () => {
   let server
+  let accessToken
 
   beforeAll(async () => {
     server = await createTestServer()
+
+    await register(server)
+
+    const loginResponse = await login(server)
+    accessToken = loginResponse.body.jwt
   })
 
-  afterAll(() => {
+  afterAll(async () => {
     server.close()
+
+    await Post.collection.drop()
+    await User.collection.drop()
+
     mongoose.connection.close()
   })
 
@@ -25,7 +38,7 @@ describe('post', () => {
 
     const response = await request(server)
       .post('/posts')
-      .set('Authorization', 'Bearer foobarbaz')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
     expect(response.status).toEqual(201)
@@ -35,7 +48,7 @@ describe('post', () => {
     const post = {}
     const response = await request(server)
       .post('/posts')
-      .set('Authorization', 'Bearer foobarbaz')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
     expect(response.status).toEqual(400)
@@ -62,7 +75,7 @@ describe('post', () => {
 
     const createResponse = await request(server)
       .post('/posts')
-      .set('Authorization', 'Bearer foobarbaz')
+      .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
     const getResponse = await request(server).get(`/posts/${createResponse.body._id}`)

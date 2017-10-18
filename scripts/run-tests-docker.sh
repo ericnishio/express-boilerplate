@@ -4,5 +4,5 @@ cd /app
 
 bash scripts/wait-for-it.sh --timeout=60 exprboil-mongo-test:27017
 
-# yarn install
+yarn install
 yarn test
