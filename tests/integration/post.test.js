@@ -30,7 +30,7 @@ describe('post', () => {
     mongoose.connection.close()
   })
 
-  it('should create post', async () => {
+  it('create post', async () => {
     const post = {
       title: 'Hello World',
       body: 'Welcome to my blog.',
@@ -44,7 +44,7 @@ describe('post', () => {
     expect(response.status).toEqual(201)
   })
 
-  it('should throw 400 when submitting empty post', async () => {
+  it('throw 400 when submitting empty post', async () => {
     const post = {}
     const response = await request(server)
       .post('/posts')
@@ -54,7 +54,7 @@ describe('post', () => {
     expect(response.status).toEqual(400)
   })
 
-  it('should throw 401 when submitting unauthorized post', async () => {
+  it('throw 401 when submitting unauthorized post', async () => {
     const post = {
       title: 'Hello World',
       body: 'Welcome to my blog.',
@@ -67,7 +67,7 @@ describe('post', () => {
     expect(response.status).toEqual(401)
   })
 
-  it('should fetch post', async () => {
+  it('fetch post', async () => {
     const post = {
       title: 'Hello World',
       body: 'Welcome to my blog.',
@@ -84,7 +84,7 @@ describe('post', () => {
     expect(getResponse.body.title).toEqual('Hello World')
   })
 
-  it('should throw 404 when fetching nonexistent post', async () => {
+  it('throw 404 when fetching nonexistent post', async () => {
     const response = await request(server).get('/posts/foobar')
 
     expect(response.status).toEqual(404)

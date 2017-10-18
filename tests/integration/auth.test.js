@@ -24,13 +24,13 @@ describe('auth', () => {
     mongoose.connection.close()
   })
 
-  it('should register new user', async () => {
+  it('register new user', async () => {
     const response = await register(server)
 
     expect(response.status).toEqual(201)
   })
 
-  it('should fail when registering with existing username', async () => {
+  it('fail when registering with existing username', async () => {
     const credentials = {
       username: 'john',
       password: 'foobarbazqux',
@@ -43,20 +43,20 @@ describe('auth', () => {
     expect(response.status).toEqual(400)
   })
 
-  it('should log in', async () => {
+  it('log in', async () => {
     const response = await login(server)
 
     expect(response.status).toEqual(200)
     expect(response.body.jwt).toBeDefined()
   })
 
-  it('should fail to log in', async () => {
+  it('fail to log in', async () => {
     const response = await login(server, {...defaultUser, password: 'myIncorrectPassword'})
 
     expect(response.status).toEqual(401)
   })
 
-  it('should verify access token', async () => {
+  it('verify access token', async () => {
     const loginResponse = await login(server)
 
     const accessToken = loginResponse.body.jwt
@@ -68,7 +68,7 @@ describe('auth', () => {
     expect(verifyResponse.status).toEqual(200)
   })
 
-  it('should fail to verify incorrect access token', async () => {
+  it('fail to verify incorrect access token', async () => {
     const fakeAccessToken = await jwt.sign({
       user: {
         _id: 'foo',
@@ -85,7 +85,7 @@ describe('auth', () => {
     expect(verifyResponse.status).toEqual(401)
   })
 
-  it('should refresh access token', async () => {
+  it('refresh access token', async () => {
     const loginResponse = await login(server)
 
     const accessToken = loginResponse.body.jwt
@@ -98,7 +98,7 @@ describe('auth', () => {
     expect(refreshResponse.body.jwt).toBeDefined()
   })
 
-  it('should fail to refresh access token', async () => {
+  it('fail to refresh access token', async () => {
     const fakeAccessToken = await jwt.sign({
       user: {
         _id: 'foo',
