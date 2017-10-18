@@ -17,3 +17,7 @@ module.file_ext=.json
 [libs]
 
 flow-typed/
+
+[ignore]
+
+.*/node_modules/bcryptjs/src/bower.json
