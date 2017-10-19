@@ -10,6 +10,7 @@ module.ignore_non_literal_requires=true
 experimental.strict_type_args=true
 
 suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
 
 module.file_ext=.js
 module.file_ext=.json

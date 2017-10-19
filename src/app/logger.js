@@ -7,15 +7,11 @@ import type {$Request, $Response, NextFunction} from 'express'
 type LogLevel = 'silly' | 'debug' | 'verbose' | 'info' | 'warn' | 'error'
 
 class Logger {
-  logger: winston.Logger
-
-  constructor() {
-    this.logger = new (winston.Logger)({
-      transports: [
-        new (winston.transports.Console)(),
-      ],
-    })
-  }
+  logger = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)(),
+    ],
+  })
 
   log = (level: LogLevel, message: string) => this.logger.log(level, message)
 
@@ -37,7 +33,16 @@ const logger = new Logger()
 export const middleware = (req: $Request, res: $Response, next: NextFunction) => {
   res.on('finish', () => {
     if (res.statusCode >= 400) {
-      logger.error(`HTTP ERROR ${res.statusCode} ${req.method} ${req.url} ${JSON.stringify(req.body)} ${JSON.stringify(req.rawHeaders)}`)
+      const message = [
+        res.statusCode,
+        req.method,
+        req.url,
+        JSON.stringify(req.body),
+        JSON.stringify(req.rawHeaders),
+        req.ip,
+      ].join(' ')
+
+      logger.error(`HTTP ERROR ${message}`)
     }
   })
 
