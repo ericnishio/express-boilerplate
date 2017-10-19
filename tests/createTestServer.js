@@ -27,15 +27,28 @@ class TestServer {
   request = () =>
     request(this.server)
 
-  register = (credentials: Credentials = defaultUser) =>
+  registerAs = (credentials: Credentials = defaultUser) =>
     this.request()
       .post('/auth/register')
       .send(credentials)
 
-  login = (credentials: Credentials = defaultUser) =>
+  loginAs = (credentials: Credentials = defaultUser) =>
     this.request()
       .post('/auth/login')
       .send(credentials)
+
+  requestAs = async (credentials: Credentials = defaultUser) => {
+    const response = await this.loginAs(credentials)
+    const bearer = `Bearer ${response.body.jwt}`
+
+    return {
+      get: (_) => this.request().get(_).set('Authorization', bearer),
+      post: (_) => this.request().post(_).set('Authorization', bearer),
+      put: (_) => this.request().put(_).set('Authorization', bearer),
+      delete: (_) => this.request().delete(_).set('Authorization', bearer),
+      patch: (_) => this.request().patch(_).set('Authorization', bearer),
+    }
+  }
 
   destroy = async () => {
     await this.closeDb()

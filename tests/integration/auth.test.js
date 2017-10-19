@@ -17,7 +17,7 @@ describe('auth', () => {
   })
 
   test('register new user', async () => {
-    const response = await server.register()
+    const response = await server.registerAs()
 
     expect(response.status).toEqual(201)
   })
@@ -28,28 +28,28 @@ describe('auth', () => {
       password: 'foobarbazqux',
     }
 
-    await server.register(credentials)
+    await server.registerAs(credentials)
 
-    const response = await server.register(credentials)
+    const response = await server.registerAs(credentials)
 
     expect(response.status).toEqual(400)
   })
 
   test('log in', async () => {
-    const response = await server.login()
+    const response = await server.loginAs()
 
     expect(response.status).toEqual(200)
     expect(response.body.jwt).toBeDefined()
   })
 
   test('fail to log in', async () => {
-    const response = await server.login({...defaultUser, password: 'myIncorrectPassword'})
+    const response = await server.loginAs({...defaultUser, password: 'myIncorrectPassword'})
 
     expect(response.status).toEqual(401)
   })
 
   test('verify access token', async () => {
-    const loginResponse = await server.login()
+    const loginResponse = await server.loginAs()
 
     const accessToken = loginResponse.body.jwt
 
@@ -78,7 +78,7 @@ describe('auth', () => {
   })
 
   test('refresh access token', async () => {
-    const loginResponse = await server.login()
+    const loginResponse = await server.loginAs()
 
     const accessToken = loginResponse.body.jwt
 

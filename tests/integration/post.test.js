@@ -4,13 +4,11 @@ import createTestServer from '../createTestServer'
 
 describe('post', () => {
   let server
-  let accessToken
+  let requestAsUser
 
   beforeAll(async () => {
     server = await createTestServer()
-
-    const loginResponse = await server.login()
-    accessToken = loginResponse.body.jwt
+    requestAsUser = await server.requestAs()
   })
 
   afterAll(async () => {
@@ -23,9 +21,8 @@ describe('post', () => {
       body: 'Welcome to my blog.',
     }
 
-    const response = await server.request()
+    const response = await requestAsUser
       .post('/posts')
-      .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
     expect(response.status).toEqual(201)
@@ -33,9 +30,8 @@ describe('post', () => {
 
   test('throw 400 when submitting empty post', async () => {
     const post = {}
-    const response = await server.request()
+    const response = await requestAsUser
       .post('/posts')
-      .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
     expect(response.status).toEqual(400)
@@ -60,9 +56,8 @@ describe('post', () => {
       body: 'Welcome to my blog.',
     }
 
-    const createResponse = await server.request()
+    const createResponse = await requestAsUser
       .post('/posts')
-      .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
     const getResponse = await server.request()
