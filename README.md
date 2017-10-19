@@ -13,6 +13,7 @@ A modern Express boilerplate for building RESTful APIs.
 - JWT-based authentication
 - Mongoose
 - Jest
+- Winston
 
 ## Install
 

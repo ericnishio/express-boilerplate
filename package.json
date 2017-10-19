@@ -41,7 +41,8 @@
     "helmet": "^3.8.2",
     "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.12.1",
-    "ms": "^2.0.0"
+    "ms": "^2.0.0",
+    "winston": "^2.4.0"
   },
   "jest": {
     "testEnvironment": "node",

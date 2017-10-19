@@ -3,6 +3,7 @@
 import 'babel-polyfill'
 
 import createApp from '$app/createApp'
+import logger from '$app/logger'
 
 require('dotenv').load()
 
@@ -12,10 +13,10 @@ const start = async () => {
     const port = process.env.PORT || 3000
 
     app.listen(port, () => {
-      console.log(`App running on port ${port}...`)
+      logger.info(`App running on port ${port}...`)
     })
   } catch (e) {
-    console.error(e.toString())
+    logger.error(e.toString())
 
     process.exit(1)
   }
