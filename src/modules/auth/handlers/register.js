@@ -13,6 +13,6 @@ export default async (req: $Request, res: $Response) => {
 
     res.sendStatus(201)
   } catch (e) {
-    res.status(400).json({error: e})
+    res.sendStatus(400)
   }
 }

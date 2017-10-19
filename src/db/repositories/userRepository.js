@@ -7,10 +7,10 @@ import User from '$db/models/User'
 import type {Id} from '$app/types'
 import type {DbUser, UpsertUser} from '$db/models/User'
 
-export const findUserById = async (id: Id): Promise<DbUser> =>
+export const findUserById = (id: Id): Promise<DbUser> =>
   User.findById(id)
 
-export const findUserByUsername = async (username: string): Promise<DbUser> =>
+export const findUserByUsername = (username: string): Promise<DbUser> =>
   User.findOne({username})
 
 export const upsertUser = async (payload: UpsertUser): Promise<DbUser> => {

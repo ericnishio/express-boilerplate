@@ -1,13 +1,9 @@
 // @flow
 
-import request from 'supertest'
-import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import ms from 'ms'
 
-import User from '$db/models/User'
-import createTestServer from '../createTestServer'
-import {register, login, defaultUser} from '../helpers'
+import createTestServer, {defaultUser} from '../createTestServer'
 
 describe('auth', () => {
   let server
@@ -17,58 +13,54 @@ describe('auth', () => {
   })
 
   afterAll(async () => {
-    server.close()
-
-    await User.collection.drop()
-
-    mongoose.connection.close()
+    await server.destroy()
   })
 
-  it('register new user', async () => {
-    const response = await register(server)
+  test('register new user', async () => {
+    const response = await server.register()
 
     expect(response.status).toEqual(201)
   })
 
-  it('fail when registering with existing username', async () => {
+  test('fail when registering with existing username', async () => {
     const credentials = {
       username: 'john',
       password: 'foobarbazqux',
     }
 
-    await register(server, credentials)
+    await server.register(credentials)
 
-    const response = await register(server, credentials)
+    const response = await server.register(credentials)
 
     expect(response.status).toEqual(400)
   })
 
-  it('log in', async () => {
-    const response = await login(server)
+  test('log in', async () => {
+    const response = await server.login()
 
     expect(response.status).toEqual(200)
     expect(response.body.jwt).toBeDefined()
   })
 
-  it('fail to log in', async () => {
-    const response = await login(server, {...defaultUser, password: 'myIncorrectPassword'})
+  test('fail to log in', async () => {
+    const response = await server.login({...defaultUser, password: 'myIncorrectPassword'})
 
     expect(response.status).toEqual(401)
   })
 
-  it('verify access token', async () => {
-    const loginResponse = await login(server)
+  test('verify access token', async () => {
+    const loginResponse = await server.login()
 
     const accessToken = loginResponse.body.jwt
 
-    const verifyResponse = await request(server)
+    const verifyResponse = await server.request()
       .get('/auth/verify')
       .set('Authorization', `Bearer ${accessToken}`)
 
     expect(verifyResponse.status).toEqual(200)
   })
 
-  it('fail to verify incorrect access token', async () => {
+  test('fail to verify incorrect access token', async () => {
     const fakeAccessToken = await jwt.sign({
       user: {
         _id: 'foo',
@@ -78,19 +70,19 @@ describe('auth', () => {
       refresh: 'fakeRefreshToken',
     }, 'incorrect_secret_123')
 
-    const verifyResponse = await request(server)
+    const verifyResponse = await server.request()
       .get('/auth/verify')
       .set('Authorization', `Bearer ${fakeAccessToken}`)
 
     expect(verifyResponse.status).toEqual(401)
   })
 
-  it('refresh access token', async () => {
-    const loginResponse = await login(server)
+  test('refresh access token', async () => {
+    const loginResponse = await server.login()
 
     const accessToken = loginResponse.body.jwt
 
-    const refreshResponse = await request(server)
+    const refreshResponse = await server.request()
       .post('/auth/refresh')
       .set('Authorization', `Bearer ${accessToken}`)
 
@@ -98,7 +90,7 @@ describe('auth', () => {
     expect(refreshResponse.body.jwt).toBeDefined()
   })
 
-  it('fail to refresh access token', async () => {
+  test('fail to refresh access token', async () => {
     const fakeAccessToken = await jwt.sign({
       user: {
         _id: 'foo',
@@ -108,7 +100,7 @@ describe('auth', () => {
       refresh: 'fakeRefreshToken',
     }, 'incorrect_secret_123')
 
-    const refreshResponse = await request(server)
+    const refreshResponse = await server.request()
       .post('/auth/refresh')
       .set('Authorization', `Bearer ${fakeAccessToken}`)
 
