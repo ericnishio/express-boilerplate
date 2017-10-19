@@ -8,8 +8,12 @@ export default async (req: $Request, res: $Response) => {
   try {
     const post = await findPostById(req.params.id)
 
-    res.json(post)
+    if (post) {
+      res.json(post)
+    } else {
+      res.sendStatus(404)
+    }
   } catch (e) {
-    res.status(404).send()
+    res.sendStatus(400)
   }
 }

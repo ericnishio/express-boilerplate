@@ -9,7 +9,6 @@ describe('post', () => {
   beforeAll(async () => {
     server = await createTestServer()
 
-    await server.register()
     const loginResponse = await server.login()
     accessToken = loginResponse.body.jwt
   })
@@ -66,15 +65,24 @@ describe('post', () => {
       .set('Authorization', `Bearer ${accessToken}`)
       .send(post)
 
-    const getResponse = await server.request().get(`/posts/${createResponse.body._id}`)
+    const getResponse = await server.request()
+      .get(`/posts/${createResponse.body._id}`)
 
     expect(getResponse.status).toEqual(200)
     expect(getResponse.body.title).toEqual('Hello World')
   })
 
   test('throw 404 when fetching nonexistent post', async () => {
-    const response = await server.request().get('/posts/foobar')
+    const response = await server.request()
+      .get('/posts/59e793a1d1107e9ee08e031e')
 
     expect(response.status).toEqual(404)
+  })
+
+  test('throw 400 when fetching post with invalid ObjectID', async () => {
+    const response = await server.request()
+      .get('/posts/foobar')
+
+    expect(response.status).toEqual(400)
   })
 })
