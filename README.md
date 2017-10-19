@@ -41,3 +41,7 @@ yarn build
 ```
 ./run-tests.sh
 ```
+
+## License
+
+[MIT](LICENSE.md)
