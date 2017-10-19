@@ -6,23 +6,27 @@ import type {$Request, $Response, NextFunction} from 'express'
 
 const logger = new winston.Logger({
   transports: [
-    new winston.transports.Console(),
+    new winston.transports.Console({
+      silent: process.env.NODE_ENV === 'test',
+    }),
   ],
 })
 
-export const httpErrorMiddleware = (req: $Request, res: $Response, next: NextFunction) => {
+export const httpLoggerMiddleware = (req: $Request, res: $Response, next: NextFunction) => {
   res.on('finish', () => {
-    if (res.statusCode >= 400) {
-      const message = [
-        res.statusCode,
-        req.method,
-        req.url,
-        JSON.stringify(req.body),
-        JSON.stringify(req.rawHeaders),
-        req.ip,
-      ].join(' ')
+    const message = [
+      res.statusCode,
+      req.method,
+      req.url,
+      JSON.stringify(req.body),
+      JSON.stringify(req.rawHeaders),
+      req.ip,
+    ].join(' ')
 
+    if (res.statusCode >= 400) {
       logger.error(`HTTP ERROR ${message}`)
+    } else {
+      logger.info(`HTTP OK ${message}`)
     }
   })
 

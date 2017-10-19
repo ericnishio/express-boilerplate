@@ -7,7 +7,7 @@ import bodyParser from 'body-parser'
 
 import connectDb from './connectDb'
 import createEndpoints from './createEndpoints'
-import {httpErrorMiddleware as httpErrorLogger} from './logger'
+import {httpLoggerMiddleware as httpLogger} from './logger'
 
 import type {$Application} from 'express'
 
@@ -17,7 +17,7 @@ export default async (): Promise<$Application> => {
   app.use(helmet())
   app.use(cors())
   app.use(bodyParser.json())
-  app.use(httpErrorLogger)
+  app.use(httpLogger)
 
   await connectDb()
 
