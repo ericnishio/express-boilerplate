@@ -10,7 +10,7 @@ const logger = new winston.Logger({
   ],
 })
 
-export const middleware = (req: $Request, res: $Response, next: NextFunction) => {
+export const httpErrorMiddleware = (req: $Request, res: $Response, next: NextFunction) => {
   res.on('finish', () => {
     if (res.statusCode >= 400) {
       const message = [
