@@ -18,6 +18,8 @@ A modern [Express](https://expressjs.com) boilerplate for building RESTful APIs.
 
 ## Install
 
+Requirements: [Node 6](https://nodejs.org/en/download/)
+
 ```
 yarn
 cp .env.dev .env
@@ -25,7 +27,7 @@ cp .env.dev .env
 
 ## Start dev server
 
-(Run the tests to lift up the database container.)
+Run the tests once to start the database container.
 
 ```
 yarn start
@@ -38,6 +40,8 @@ yarn build
 ```
 
 ## Run tests
+
+Requirements: [Docker](https://www.docker.com)
 
 ```
 ./run-tests.sh
