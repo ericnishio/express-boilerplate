@@ -42,11 +42,11 @@ class TestServer {
     const bearer = `Bearer ${response.body.jwt}`
 
     return {
-      get: (_) => this.request().get(_).set('Authorization', bearer),
-      post: (_) => this.request().post(_).set('Authorization', bearer),
-      put: (_) => this.request().put(_).set('Authorization', bearer),
-      delete: (_) => this.request().delete(_).set('Authorization', bearer),
-      patch: (_) => this.request().patch(_).set('Authorization', bearer),
+      get: (route) => this.request().get(route).set('Authorization', bearer),
+      post: (route) => this.request().post(route).set('Authorization', bearer),
+      put: (route) => this.request().put(route).set('Authorization', bearer),
+      delete: (route) => this.request().delete(route).set('Authorization', bearer),
+      patch: (route) => this.request().patch(route).set('Authorization', bearer),
     }
   }
 
