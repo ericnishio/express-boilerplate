@@ -16,9 +16,9 @@ A modern [Express](https://expressjs.com) boilerplate for building RESTful APIs.
 - [Jest](https://facebook.github.io/jest/)
 - [Winston](https://github.com/winstonjs/winston)
 
-## Install
+Requirements: [Node](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.com/en/docs/install), [Docker](https://www.docker.com)
 
-Requirements: [Node](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.com/en/docs/install)
+## Install
 
 ```
 yarn
@@ -40,8 +40,6 @@ yarn build
 ```
 
 ## Run tests
-
-Requirements: [Docker](https://www.docker.com)
 
 ```
 ./run-tests.sh
