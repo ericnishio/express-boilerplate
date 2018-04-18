@@ -1,6 +1,4 @@
-import {Request, Response, NextFunction} from 'express'
-
-import {Middleware, Routes} from './types'
+import {Routes} from './types'
 import register from './modules/auth/handlers/register'
 import login from './modules/auth/handlers/login'
 import verify from './modules/auth/handlers/verify'
