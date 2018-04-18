@@ -17,10 +17,6 @@ A modern [Express](https://expressjs.com) boilerplate for building RESTful APIs 
 
 Requirements: [Node](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.com/en/docs/install), [Docker](https://www.docker.com)
 
-TODO:
-
-- [ ] `--inspect`
-
 ## Install
 
 ```
