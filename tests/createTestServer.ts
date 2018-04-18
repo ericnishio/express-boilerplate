@@ -7,7 +7,7 @@ import createApp from '../src/app/createApp'
 
 import {Server} from 'http'
 import {Application} from 'express'
-import {ICredentials} from '../src/modules/auth/types'
+import {Credentials} from '../src/modules/auth/types'
 
 class TestServer {
   public server: Server
@@ -25,17 +25,17 @@ class TestServer {
   public request = () =>
     request(this.server)
 
-  public registerAs = (credentials: ICredentials = defaultUser) =>
+  public registerAs = (credentials: Credentials = defaultUser) =>
     this.request()
       .post('/auth/register')
       .send(credentials)
 
-  public loginAs = (credentials: ICredentials = defaultUser) =>
+  public loginAs = (credentials: Credentials = defaultUser) =>
     this.request()
       .post('/auth/login')
       .send(credentials)
 
-  public requestAs = async (credentials: ICredentials = defaultUser) => {
+  public requestAs = async (credentials: Credentials = defaultUser) => {
     const response = await this.loginAs(credentials)
     const bearer = `Bearer ${response.body.jwt}`
 

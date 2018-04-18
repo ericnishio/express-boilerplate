@@ -1,11 +1,11 @@
+import {Request, Response} from 'express'
+
 import {findUserByUsername} from '../../../db/repositories/userRepository'
+import {Credentials} from '../../auth/types'
 import {validatePassword, generateAccessToken} from '../helpers'
 
-import {Request, Response} from 'express'
-import {ICredentials} from '../../auth/types'
-
 export default async (req: Request, res: Response) => {
-  const {username, password}: ICredentials = req.body
+  const {username, password}: Credentials = req.body
 
   try {
     const user = await findUserByUsername(username)

@@ -1,15 +1,15 @@
-import {Schema, model} from 'mongoose'
+import {model, Schema, Document} from 'mongoose'
 
-import {IDbModel, Id} from '../../app/types'
+import {DbModel, Id} from '../../app/types'
 
-interface IBasePost {
+interface BasePost {
   title: string,
   body: string,
 }
 
-export type DbPost = IDbModel & IBasePost
+export interface DbPost extends Document, BasePost {}
 
-export type UpsertPost = IBasePost & {
+export interface UpsertPost extends BasePost {
   _id?: Id,
 }
 
@@ -24,4 +24,4 @@ const PostSchema = new Schema({
   },
 })
 
-export default model('Post', PostSchema)
+export default model<DbPost>('Post', PostSchema)

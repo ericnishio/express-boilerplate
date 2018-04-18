@@ -1,6 +1,6 @@
-import {upsertUser} from '../../../db/repositories/userRepository'
-
 import {Request, Response} from 'express'
+
+import {upsertUser} from '../../../db/repositories/userRepository'
 import {UpsertUser} from '../../../db/models/User'
 
 export default async (req: Request, res: Response) => {

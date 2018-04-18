@@ -1,6 +1,6 @@
-import {extractAccessToken, verifyAccessToken} from './helpers'
-
 import {Request, Response, NextFunction} from 'express'
+
+import {extractAccessToken, verifyAccessToken} from './helpers'
 
 export const auth = async (req: Request, res: Response, next: NextFunction) => {
   try {

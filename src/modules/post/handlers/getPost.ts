@@ -1,6 +1,6 @@
-import {findPostById} from '../../../db/repositories/postRepository'
-
 import {Request, Response} from 'express'
+
+import {findPostById} from '../../../db/repositories/postRepository'
 
 export default async (req: Request, res: Response) => {
   try {

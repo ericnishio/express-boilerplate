@@ -1,19 +1,21 @@
+import {Application} from 'express'
+
 import routes from '../routes'
 
-import {Application} from 'express'
-import {Route, IEndpoint} from './types'
+import {Route, Endpoint} from './types'
 
 export default (app: Application) => {
-  const endpoints = Object.keys(routes).map((route: Route): IEndpoint => ({
+  const endpoints = Object.keys(routes).map((route: Route): Endpoint => ({
     route,
     handler: routes[route].handler,
     middlewares: routes[route].middlewares || [],
   }))
 
-  endpoints.forEach(({route, middlewares, handler}: IEndpoint) => {
+  endpoints.forEach(({route, middlewares, handler}: Endpoint) => {
     const [method, path] = route.split(' ')
     const params = [path, ...middlewares, handler]
 
+    // @ts-ignore
     app[method].apply(app, params)
   })
 }

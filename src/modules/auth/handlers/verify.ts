@@ -1,6 +1,6 @@
-import {verifyAccessToken, extractAccessToken} from '../helpers'
-
 import {Request, Response} from 'express'
+
+import {verifyAccessToken, extractAccessToken} from '../helpers'
 
 export default async (req: Request, res: Response) => {
   try {

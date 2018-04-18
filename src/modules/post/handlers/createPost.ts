@@ -1,6 +1,6 @@
-import {upsertPost} from '../../../db/repositories/postRepository'
-
 import {Request, Response} from 'express'
+
+import {upsertPost} from '../../../db/repositories/postRepository'
 import {UpsertPost} from '../../../db/models/Post'
 
 export default async (req: Request, res: Response) => {

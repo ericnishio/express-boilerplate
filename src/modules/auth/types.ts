@@ -1,11 +1,11 @@
 import {Id} from '../../app/types'
 
-export interface ICredentials {
+export interface Credentials {
   username: string,
   password: string,
 }
 
-export interface IAccessToken {
+export interface AccessToken {
   user: {
     _id: Id,
     username: string,

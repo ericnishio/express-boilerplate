@@ -4,7 +4,7 @@ import ms from 'ms'
 
 import {Request} from 'express'
 import {DbUser} from '../../db/models/User'
-import {IAccessToken} from './types'
+import {AccessToken} from './types'
 
 export const hashPassword = async (password: string): Promise<string> =>
   bcrypt.hash(password, 10)
@@ -18,7 +18,7 @@ export const validatePassword = async (password: string, hash: string) => {
 }
 
 export const generateAccessToken = async (user: DbUser): Promise<string> => {
-  const tokenData: IAccessToken = {
+  const tokenData: AccessToken = {
     user: {
       _id: user._id,
       username: user.username,
@@ -30,9 +30,10 @@ export const generateAccessToken = async (user: DbUser): Promise<string> => {
   return await jwt.sign(tokenData, process.env.JWT_SECRET)
 }
 
-export const verifyAccessToken = async (accessToken: string): Promise<?IAccessToken> => {
+export const verifyAccessToken = async (accessToken: string): Promise<void> => {
   try {
-    const tokenData: IAccessToken = await jwt.verify(accessToken, process.env.JWT_SECRET)
+    // @ts-ignore
+    const tokenData: AccessToken = await jwt.verify(accessToken, process.env.JWT_SECRET)
 
     if (tokenData.expires < +new Date()) {
       throw new Error('EXPIRED_ACCESS_TOKEN')
@@ -43,4 +44,6 @@ export const verifyAccessToken = async (accessToken: string): Promise<?IAccessTo
 }
 
 export const extractAccessToken = (req: Request): string =>
-  req.headers.authorization.split('Bearer ')[1]
+  typeof req.headers.authorization === 'string'
+    ? req.headers.authorization.split('Bearer ')[1]
+    : ''

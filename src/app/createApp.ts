@@ -1,9 +1,8 @@
-import express from 'express'
+import express, {Application} from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 
-import {Application} from 'express'
 import connectDb from './connectDb'
 import createEndpoints from './createEndpoints'
 import {httpLoggerMiddleware as httpLogger} from './logger'

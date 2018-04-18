@@ -10,6 +10,7 @@
       true,
       "spaces"
     ],
+    "interface-name": false,
     "no-consecutive-blank-lines": true,
     "no-internal-module": true,
     "no-null-keyword": true,

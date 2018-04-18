@@ -1,13 +1,14 @@
+import {Request, Response} from 'express'
 import jwt from 'jsonwebtoken'
 
 import {findUserById} from '../../../db/repositories/userRepository'
 import {generateAccessToken, extractAccessToken} from '../helpers'
-
-import {Request, Response} from 'express'
+import {AccessToken} from '../types'
 
 export default async (req: Request, res: Response) => {
   try {
-    const accessToken = await jwt.decode(extractAccessToken(req))
+    // @ts-ignore
+    const accessToken: AccessToken = await jwt.decode(extractAccessToken(req))
     const user = await findUserById(accessToken.user._id)
 
     if (accessToken.refresh !== user.password) {

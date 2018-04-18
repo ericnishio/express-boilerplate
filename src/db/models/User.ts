@@ -1,15 +1,15 @@
-import {Schema, model} from 'mongoose'
+import {model, Schema, Document} from 'mongoose'
 
-import {IDbModel, Id} from '../../app/types'
+import {DbModel, Id} from '../../app/types'
 
-interface IBaseUser {
+interface BaseUser {
   username: string,
   password: string,
 }
 
-export type DbUser = IDbModel & IBaseUser
+export interface DbUser extends Document, BaseUser {}
 
-export type UpsertUser = IBaseUser & {
+export interface UpsertUser extends BaseUser {
   _id?: Id,
 }
 
@@ -27,4 +27,4 @@ const UserSchema = new Schema({
   },
 })
 
-export default model('User', UserSchema)
+export default model<DbUser>('User', UserSchema)

@@ -19,7 +19,6 @@ Requirements: [Node](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.co
 
 TODO:
 
-- [ ] Fix TypeScript errors
 - [ ] Fix `yarn build`
 - [ ] Implement watcher
 
