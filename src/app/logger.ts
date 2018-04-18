@@ -1,5 +1,4 @@
 import {Logger, transports} from 'winston'
-
 import {Request, Response, NextFunction} from 'express'
 
 const logger = new Logger({
