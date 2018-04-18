@@ -1,4 +1,4 @@
-import {Id} from '../../app/types'
+import {Id} from '../../db/types'
 
 export interface Credentials {
   username: string,

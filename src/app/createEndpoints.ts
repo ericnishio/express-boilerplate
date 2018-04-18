@@ -2,7 +2,7 @@ import {Application} from 'express'
 
 import routes from '../routes'
 
-import {Route, Endpoint} from './types'
+import {Route, Endpoint} from '../types'
 
 export default (app: Application) => {
   const endpoints = Object.keys(routes).map((route: Route): Endpoint => ({

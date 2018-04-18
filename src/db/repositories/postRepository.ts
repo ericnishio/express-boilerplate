@@ -1,4 +1,4 @@
-import {Id} from '../../app/types'
+import {Id} from '../types'
 import Post, {DbPost, UpsertPost} from '../models/Post'
 
 export const findPostById = async (id: Id): Promise<DbPost> => {

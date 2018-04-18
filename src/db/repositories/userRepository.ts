@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 
-import {Id} from '../../app/types'
+import {Id} from '../types'
 import User, {DbUser, UpsertUser} from '../models/User'
 
 export const findUserById = async (id: Id): Promise<DbUser> => {

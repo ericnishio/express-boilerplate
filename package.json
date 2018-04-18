@@ -8,7 +8,7 @@
     "start": "ts-node src/index.ts --inspect",
     "build": "tsc",
     "test": "jest --verbose",
-    "proofread": "tslint -c tslint.json -p tsconfig.json"
+    "proofread": "tslint -c tslint.json -p tsconfig.json src/**/*.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.1",

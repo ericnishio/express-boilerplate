@@ -1,6 +1,6 @@
 import {Request, Response, NextFunction} from 'express'
 
-import {Middleware} from './app/types'
+import {Middleware, Routes} from './types'
 import register from './modules/auth/handlers/register'
 import login from './modules/auth/handlers/login'
 import verify from './modules/auth/handlers/verify'
@@ -10,16 +10,7 @@ import getPost from './modules/post/handlers/getPost'
 import notFound from './modules/error/handlers/404'
 import {auth} from './modules/auth/middlewares'
 
-interface RouteConfig {
-  handler: (req: Request, res: Response) => void,
-  middlewares?: Middleware[],
-}
-
-interface RouteMap {
-  [route: string]: RouteConfig,
-}
-
-const routes: RouteMap = {
+const routes: Routes = {
   'post /auth/register': {handler: register},
   'post /auth/login': {handler: login},
   'get /auth/verify': {handler: verify},

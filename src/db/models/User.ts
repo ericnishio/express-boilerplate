@@ -1,6 +1,6 @@
 import {model, Schema, Document} from 'mongoose'
 
-import {DbModel, Id} from '../../app/types'
+import {DbModel, Id} from '../../db/types'
 
 interface BaseUser {
   username: string,
