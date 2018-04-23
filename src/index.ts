@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import {load as dotenv} from 'dotenv'
 
 import createApp from './app/createApp'

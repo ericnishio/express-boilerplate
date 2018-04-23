@@ -6,16 +6,15 @@ express-boilerplate
 
 A modern [Express](https://expressjs.com) boilerplate for building RESTful APIs in TypeScript.
 
-- [Babel](https://babeljs.io) (transpiles to Node 6)
-- ES2017, async/await, spread syntax, etc.
 - [TypeScript](https://www.typescriptlang.org/)
+- ES6+, async/await, spread syntax, etc.
 - [TSLint](https://palantir.github.io/tslint/)
 - [JWT](https://jwt.io)-based authentication
 - [Mongoose](http://mongoosejs.com)
 - [Jest](https://facebook.github.io/jest/)
 - [Winston](https://github.com/winstonjs/winston)
 
-Requirements: [Node](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.com/en/docs/install), [Docker](https://www.docker.com)
+Requirements: [Node 6+](https://nodejs.org/en/download/), [Yarn](https://yarnpkg.com/en/docs/install), [Docker](https://www.docker.com)
 
 ## Install
 

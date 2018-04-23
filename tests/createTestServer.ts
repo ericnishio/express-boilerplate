@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import http from 'http'
 import request from 'supertest'
 import mongoose from 'mongoose'
