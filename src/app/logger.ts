@@ -14,7 +14,7 @@ export const httpLoggerMiddleware = (req: Request, res: Response, next: NextFunc
     const message = [
       res.statusCode,
       req.method,
-      req.url,
+      req.originalUrl,
       JSON.stringify(req.body),
       JSON.stringify(req.rawHeaders),
       req.ip,
