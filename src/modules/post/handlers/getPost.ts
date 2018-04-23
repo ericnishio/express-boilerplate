@@ -1,15 +1,18 @@
 import {Request, Response} from 'express'
 
 import {findPostById} from '../../../db/repositories/postRepository'
+import notFound from '../../error/handlers/404'
 
 export default async (req: Request, res: Response) => {
   try {
-    const post = await findPostById(req.params.id)
+    const {id} = req.params
+
+    const post = await findPostById(id)
 
     if (post) {
       res.json(post)
     } else {
-      res.sendStatus(404)
+      notFound(req, res)
     }
   } catch (e) {
     res.sendStatus(400)

@@ -1,8 +1,9 @@
 import {Id} from '../types'
+import {isObjectId} from '../helpers'
 import Post, {DbPost, UpsertPost} from '../models/Post'
 
 export const findPostById = async (id: Id): Promise<DbPost> => {
-  return await Post.findById(id)
+  return isObjectId(id) ? await Post.findById(id) : undefined
 }
 
 export const upsertPost = async (payload: UpsertPost): Promise<DbPost> => {
