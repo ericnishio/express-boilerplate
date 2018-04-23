@@ -72,10 +72,10 @@ describe('post', () => {
     expect(response.status).toEqual(404)
   })
 
-  test('throw 400 when fetching post with invalid ObjectID', async () => {
+  test('throw 404 when fetching post with invalid ObjectID', async () => {
     const response = await server.request()
       .get('/posts/foobar')
 
-    expect(response.status).toEqual(400)
+    expect(response.status).toEqual(404)
   })
 })
