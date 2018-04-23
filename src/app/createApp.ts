@@ -17,7 +17,7 @@ export default async (): Promise<Application> => {
 
   await connectDb()
 
-  app.use('/', routes())
+  app.use('/', routes)
 
   return app
 }
