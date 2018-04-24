@@ -3,14 +3,14 @@ import {model, Schema, Document} from 'mongoose'
 import {Id} from '../../db/types'
 
 interface BaseUser {
-  username: string,
-  password: string,
+  username: string
+  password: string
 }
 
 export interface DbUser extends Document, BaseUser {}
 
 export interface UpsertUser extends BaseUser {
-  _id?: Id,
+  _id?: Id
 }
 
 const UserSchema = new Schema({
