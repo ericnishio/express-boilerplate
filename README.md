@@ -37,6 +37,8 @@ yarn start
 yarn build
 ```
 
+This creates a build in `dist`.
+
 ## Run tests
 
 ```
