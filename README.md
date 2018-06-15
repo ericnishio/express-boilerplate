@@ -1,5 +1,4 @@
-express-boilerplate
-===================
+# <img src="express-boilerplate.png" height="80" alt="express-boilerplate" />
 
 [![Known Vulnerabilities](https://snyk.io/test/github/ericnishio/express-boilerplate/master/badge.svg)](https://snyk.io/test/github/ericnishio/express-boilerplate)
 [![Build Status](https://api.travis-ci.org/ericnishio/express-boilerplate.svg)](https://travis-ci.org/ericnishio/express-boilerplate)
