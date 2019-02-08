@@ -24,8 +24,12 @@ cp .env.dev .env
 
 ## Start dev server
 
-Run the tests once to start the database container.
+Run the tests once to start the database container:
+```
+./run-tests.sh
+```
 
+Then:
 ```
 yarn start
 ```
