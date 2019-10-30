@@ -38,7 +38,7 @@
     "express": "^4.16.2",
     "helmet": "^3.8.2",
     "jsonwebtoken": "^8.1.0",
-    "mongoose": "^5.0.16",
+    "mongoose": "^5.7.5",
     "ms": "^2.0.0",
     "winston": "^2.4.0"
   },
