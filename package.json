@@ -37,7 +37,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "helmet": "^3.8.2",
-    "jsonwebtoken": "^8.1.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.0.16",
     "ms": "^2.0.0",
     "winston": "^2.4.0"
